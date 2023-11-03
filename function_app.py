@@ -1,61 +1,32 @@
+
+# import datetime
+# import logging
+# import azure.functions as func
+# import requests
+# app = func.FunctionApp()
+
+# @app.function_name(name="mytimer")
+# @app.schedule(schedule="0 */1 * * * *", 
+#               arg_name="mytimer",
+#               run_on_startup=True) 
+# def test_function(mytimer: func.TimerRequest) -> None:
+#     utc_timestamp = datetime.datetime.utcnow().replace(
+#         tzinfo=datetime.timezone.utc).isoformat()
+#     if mytimer.past_due:
+#         logging.info('The timer is past due!')
+#     response = requests.get("https://detention-api.azurewebsites.net/test")
+    
+    
+    
 import logging
 import azure.functions as func
 import requests
-
 app = func.FunctionApp()
-
 
 @app.schedule(schedule="0 */1 * * * *", arg_name="myTimer", run_on_startup=True,
               use_monitor=False) 
-def timer_trigger(myTimer: func.TimerRequest) -> None:
+def bbb(myTimer: func.TimerRequest) -> None:
     if myTimer.past_due:
         logging.info('The timer is past due!')
-
-    logging.info('Python timerrrrrrrrrrrrrrrrrr trigger function executed.')
-    
-@app.timer_trigger(schedule="0 */1 * * * *", arg_name="myTimer", run_on_startup=True,
-              use_monitor=False) 
-def cbm_trigger_1(myTimer: func.TimerRequest) -> None:
-    
-    if myTimer.past_due:
-        logging.info('The timer is past due!')
-    
-    response= requests.post("https://detention-api.azurewebsites.net/test")
-
-    if response.status_code == 200:
-        # Request was successful
-        logging.info('HTTP GET request to the URL was successful.')
-        # You can access the content of the response using response.text, response.content, etc.
-    else:
-        # Request failed
-        logging.error('HTTP GET request to the URL failed with status code: %d', response.status_code)
-
-    logging.info('Pythonnnnnnnnnnnn timer trigger function executed.')
-    
-
-@app.timer_trigger(schedule="0 */1 * * * *", arg_name="myTimer", run_on_startup=True,
-              use_monitor=False) 
-def cbm_trigger(myTimer: func.TimerRequest) -> None:
-    
-    if myTimer.past_due:
-        logging.info('The timer is past due!')
-
-    logging.info('Python timer trigger function executed.')
-
-@app.timer_trigger(schedule="0 */1 * * * *", arg_name="myTimer", run_on_startup=True,
-              use_monitor=False) 
-def cbm_trigger_10(myTimer: func.TimerRequest) -> None:
-    
-    if myTimer.past_due:
-        logging.info('The timer is past due!')
-
-    logging.info('Python timer trigger function executed.')
-
-@app.timer_trigger(schedule="0 */1 * * * *", arg_name="myTimer", run_on_startup=True,
-              use_monitor=False) 
-def timer_trigger111(myTimer: func.TimerRequest) -> None:
-    
-    if myTimer.past_due:
-        logging.info('The timer is past due!')
-
-    logging.info('Python timer trigger function executed.')
+    response = requests.get("https://detention-api.azurewebsites.net/test")
+    logging.info('Python timer trigger fwunction executed.')
