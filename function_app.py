@@ -6,7 +6,7 @@ import requests
 app = func.FunctionApp()
 
 @app.function_name(name="mytimer")
-@app.schedule(schedule="0 30 1 * * *", 
+@app.schedule(schedule="0 35 17 * * *", 
               arg_name="mytimer",
               run_on_startup=True) 
 def test_function(mytimer: func.TimerRequest) -> None:
